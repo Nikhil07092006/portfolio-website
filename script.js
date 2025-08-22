@@ -1,7 +1,7 @@
-// Enhanced Portfolio JavaScript with Profile Section
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Navigation
+    
     const hamburger = document.querySelector('.hamburger');
     const navlist = document.querySelector('.navlist');
     
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Navigation Links with smooth scrolling
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
 
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = link.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
             
-            // Close mobile menu if open
+        
             if (hamburger && navlist) {
                 hamburger.classList.remove('active');
                 navlist.classList.remove('active');
@@ -36,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Update active nav link
+        
             navLinks.forEach(nav => nav.classList.remove('active'));
             link.classList.add('active');
         });
     });
 
-    // Active navigation on scroll
+  
     window.addEventListener('scroll', () => {
         let current = '';
         const scrollPos = window.scrollY + 100;
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hire Me Button
     const hireBtn = document.getElementById('hireBtn');
     if (hireBtn) {
         hireBtn.addEventListener('click', () => {
@@ -76,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Download CV Button (placeholder)
     const downloadBtn = document.querySelector('.btn-secondary');
     if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
@@ -84,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll Animations
+
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -95,12 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Animate skill bars when skills section is visible
+          
                 if (entry.target.id === 'skills') {
                     animateSkillBars();
                 }
                 
-                // Animate stats when about section is visible
+             
                 if (entry.target.id === 'about') {
                     animateStats();
                 }
@@ -108,12 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Observe all sections for scroll animations
     sections.forEach(section => {
         observer.observe(section);
     });
 
-    // Skill Bar Animation
+  
     function animateSkillBars() {
         const skillBars = document.querySelectorAll('.skill-progress');
         skillBars.forEach((bar, index) => {
@@ -126,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Stats Animation
+
     function animateStats() {
         const statNumbers = document.querySelectorAll('.stat-number');
         statNumbers.forEach(stat => {
@@ -139,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Counter Animation
+
     function animateCounter(element, start, end, finalText) {
         const duration = 2000;
         const increment = end / (duration / 16);
@@ -159,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 16);
     }
 
-    // Dynamic Text Animation for Hero Title
     const dynamicTexts = [
         "Software Developer",
         "Web Designer", 
@@ -181,10 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Change text every 4 seconds
     setInterval(changeText, 4000);
 
-    // Profile Image Fallback Handling
     const profileImg = document.querySelector('.profile-pic');
     if (profileImg) {
         profileImg.addEventListener('error', () => {
@@ -204,19 +197,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Contact Form Handling
     const contactForm = document.querySelector('.contact-form form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form data
+    
             const name = contactForm.querySelector('input[placeholder="Your Name"]').value;
             const email = contactForm.querySelector('input[placeholder="Your Email"]').value;
             const subject = contactForm.querySelector('input[placeholder="Subject"]').value;
             const message = contactForm.querySelector('textarea').value;
             
-            // Basic validation
+     
             if (!name || !email || !subject || !message) {
                 showNotification('Please fill in all fields', 'error');
                 return;
@@ -227,37 +219,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // Create mailto link with form data
             const mailtoSubject = encodeURIComponent(subject || 'Contact from Portfolio Website');
             const mailtoBody = encodeURIComponent(`Hi Nikhil,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nBest regards,\n${name}`);
             const mailtoLink = `mailto:kumarnikhil4963@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
             
-            // Open email client
             window.open(mailtoLink, '_blank');
             
-            // Show success message
+            
             showNotification('Message sent successfully!', 'success');
             
-            // Reset form
+     
             contactForm.reset();
         });
     }
 
-    // Email validation helper
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
-    // Notification System
     function showNotification(message, type = 'info') {
-        // Remove existing notification if any
+  
         const existingNotification = document.querySelector('.notification');
         if (existingNotification) {
             existingNotification.remove();
         }
 
-        // Create notification element
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         notification.innerHTML = `
@@ -270,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Add notification styles
+
         notification.style.cssText = `
             position: fixed;
             top: 100px;
@@ -289,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
             backdrop-filter: blur(10px);
         `;
 
-        // Add notification content styles
         const notificationContent = notification.querySelector('.notification-content');
         notificationContent.style.cssText = `
             display: flex;
@@ -327,15 +313,14 @@ document.addEventListener('DOMContentLoaded', () => {
             justify-content: center;
         `;
 
-        // Add to body
         document.body.appendChild(notification);
 
-        // Animate in
+
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
 
-        // Close button functionality
+ 
         closeBtn.addEventListener('click', () => {
             notification.style.transform = 'translateX(400px)';
             setTimeout(() => notification.remove(), 300);
@@ -349,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn.style.opacity = '0.7';
         });
 
-        // Auto remove after 5 seconds
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.style.transform = 'translateX(400px)';
@@ -358,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // Helper functions for notifications
+   
     function getNotificationIcon(type) {
         switch (type) {
             case 'success': return 'fa-check-circle';
@@ -377,7 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Parallax Effect for floating elements
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.2;
@@ -389,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smooth scrolling for all anchor links
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -403,9 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Loading Animation (optional)
+
     function showPageLoad() {
-        // Add subtle loading animation when page loads
+       
         const sections = document.querySelectorAll('.section');
         sections.forEach((section, index) => {
             section.style.opacity = '0';
@@ -418,10 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize page load animation
+   
     showPageLoad();
 
-    // Project card hover effects
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -433,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Work card hover effects
+    
     const workCards = document.querySelectorAll('.work-card');
     workCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -451,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Theme toggle functionality
+    
     function addThemeToggle() {
         const themeToggle = document.createElement('button');
         themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
@@ -483,8 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.className = document.body.classList.contains('light-theme') 
                 ? 'fas fa-sun' 
                 : 'fas fa-moon';
-            
-            // Save theme preference
+           
             const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
             localStorage.setItem('theme', theme);
             
@@ -500,7 +481,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load saved theme
     function loadSavedTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
@@ -508,11 +488,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize theme features
+  
     loadSavedTheme();
     addThemeToggle();
 
-    // Easter Egg - Konami Code
     let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
     let konamiIndex = 0;
 
@@ -529,14 +508,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function activateEasterEgg() {
-        // Add rainbow animation
+        
         document.body.style.animation = 'rainbow 3s ease-in-out';
         showNotification('🎉 Easter egg activated! You found the secret Konami code!', 'success');
         
-        // Add confetti effect (simple version)
+       
         createConfetti();
-        
-        // Add rainbow animation CSS if not exists
+     
         if (!document.querySelector('#rainbow-style')) {
             const rainbowStyle = document.createElement('style');
             rainbowStyle.id = 'rainbow-style';
@@ -552,7 +530,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.head.appendChild(rainbowStyle);
         }
         
-        // Remove effect after 3 seconds
         setTimeout(() => {
             document.body.style.animation = '';
         }, 3000);
@@ -579,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, i * 100);
         }
         
-        // Add confetti animation if not exists
+        
         if (!document.querySelector('#confetti-style')) {
             const confettiStyle = document.createElement('style');
             confettiStyle.id = 'confetti-style';
@@ -595,11 +572,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Performance optimization
     let ticking = false;
     
     function updateScrollEffects() {
-        // Add any scroll-based effects here
+        
         ticking = false;
     }
     
@@ -612,7 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     window.addEventListener('scroll', requestTick);
 
-    // Console welcome message for developers
+    
     console.log(`
     🚀 Welcome to Nikhil Kumar's Enhanced Portfolio!
     
@@ -632,6 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Built with ❤️ using vanilla HTML, CSS, and JavaScript
     `);
 
-    // Initialize complete
+    
     showNotification('Portfolio loaded successfully! 🚀', 'success');
 });
+

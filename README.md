@@ -11,7 +11,7 @@ Welcome to my personal portfolio website! This is a responsive site built using 
 
 ## 🌐 Live Website
 
-🔗 [Visit My Portfolio](https://nikhil07092006.github.io/portfolio-website/)
+🔗 [Visit My Portfolio](https://nikhil07092006.github.io/Portfolio-website/)
 
 ---
 
